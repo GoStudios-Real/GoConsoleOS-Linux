@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=GoConsoleOS Keyboard
+Comment=On-screen keyboard (Super+K to toggle)
+Exec=/usr/share/goconsole/keyboard/gostudios-keyboard.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=false

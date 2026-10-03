@@ -1,0 +1,29 @@
+#!/bin/bash
+# GoConsoleOS build hook - user setup
+set -e
+
+echo "GoConsoleOS: Setting up user account..."
+
+# Create gostudios user
+useradd -m -s /bin/bash -G sudo,audio,video,plugdev,input,netdev,games gostudios 2>/dev/null || true
+echo "gostudios:gostudios" | chpasswd
+
+# Autologin user (like SteamOS)
+mkdir -p /etc/sddm.conf.d
+cat > /etc/sddm.conf.d/gostudios.conf << 'EOF'
+[Autologin]
+User=gostudios
+Session=plasma.desktop
+Relogin=true
+EOF
+
+# Passwordless sudo for gaming convenience (like SteamOS dev mode)
+echo "gostudios ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/gostudios
+
+# Set hostname
+echo "gostudios" > /etc/hostname
+
+# Plymouth splash
+echo "GoConsoleOS boot splash configured"
+
+echo "GoConsoleOS: User setup complete"

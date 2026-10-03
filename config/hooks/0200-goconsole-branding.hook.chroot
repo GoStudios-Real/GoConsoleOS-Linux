@@ -1,0 +1,42 @@
+#!/bin/bash
+# GoConsoleOS build hook - branding and permissions
+set -e
+
+echo "GoConsoleOS: Applying branding..."
+
+# Make scripts executable
+chmod +x /usr/share/goconsole/scripts/*.sh 2>/dev/null || true
+chmod +x /usr/share/goconsole/keyboard/*.sh 2>/dev/null || true
+chmod +x /usr/share/goconsole/themes/*.sh 2>/dev/null || true
+
+# Generate wallpapers if needed
+if [ ! -f /usr/share/goconsole/wallpapers/goconsole-blue.png ]; then
+    # Solid color fallback
+    mkdir -p /usr/share/goconsole/wallpapers
+    echo "Generating fallback wallpaper..."
+    if command -v convert &> /dev/null; then
+        convert -size 1920x1080 xc:'#0D0D14' \
+            -fill '#0066FF' -draw "rectangle 0,0 1920,420" \
+            -fill '#0066FF' -font Helvetica-Bold -pointsize 72 -gravity North -annotate +0+180 'GoConsoleOS' \
+            -fill '#7A80A0' -font Helvetica -pointsize 28 -gravity South -annotate +0+80 'GoStudios Corporation' \
+            /usr/share/goconsole/wallpapers/goconsole-blue.png
+    fi
+fi
+
+# Plymouth theme
+if command -v plymouth-set-default-theme &> /dev/null; then
+    plymouth-set-default-theme goconsole 2>/dev/null || plymouth-set-default-theme ubuntu-text 2>/dev/null || true
+    update-initramfs -u 2>/dev/null || true
+fi
+
+# Enable services
+systemctl enable sddm 2>/dev/null || true
+systemctl enable NetworkManager 2>/dev/null || true
+systemctl enable bluetooth 2>/dev/null || true
+systemctl enable pipeewire 2>/dev/null || true
+systemctl enable pipewire-pulse 2>/dev/null || true
+
+# udev rules
+udevadm control --reload-rules 2>/dev/null || true
+
+echo "GoConsoleOS: Branding complete"

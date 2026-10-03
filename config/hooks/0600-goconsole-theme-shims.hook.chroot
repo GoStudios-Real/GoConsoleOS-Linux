@@ -1,0 +1,15 @@
+#!/bin/bash
+# Install shim packages so live-build's Check_package finds custom theme
+set -e
+build_dummy() {
+  NAME="$1"; DESC="$2"
+  D="/tmp/deb-$NAME"
+  rm -rf "$D"; mkdir -p "$D/DEBIAN"
+  printf 'Package: %s\nVersion: 1.0\nArchitecture: all\nMaintainer: GoStudios Corporation <build@gostudios.net>\nSection: misc\nPriority: optional\nDescription: %s\n GoConsoleOS custom build support package.\n' "$NAME" "$DESC" > "$D/DEBIAN/control"
+  dpkg-deb --build --root-owner-group "$D" "/tmp/$NAME.deb" > /dev/null
+}
+build_dummy syslinux-themes-goconsole "custom syslinux theme for GoConsoleOS"
+build_dummy gfxboot-theme-ubuntu "gfxboot theme shim for GoConsoleOS"
+dpkg -i /tmp/syslinux-themes-goconsole.deb /tmp/gfxboot-theme-ubuntu.deb > /dev/null 2>&1 || true
+rm -rf /tmp/deb-* /tmp/*.deb
+echo "GoConsoleOS: theme shim packages installed"

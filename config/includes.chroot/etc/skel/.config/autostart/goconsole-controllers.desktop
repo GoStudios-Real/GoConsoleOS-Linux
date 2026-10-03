@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GoConsoleOS Controller Manager
+Comment=Detects and configures game controllers
+Exec=/usr/share/goconsole/scripts/controller-manager.sh --watch
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=5

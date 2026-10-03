@@ -1,0 +1,5 @@
+output/
+build/
+*.iso
+*.log
+wsl-build*.log

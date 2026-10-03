@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GoConsoleOS Gaming Mode
+Comment=GoStudios Console Gaming Experience
+Exec=/usr/share/goconsole/scripts/gaming-mode.sh
+Icon=preferences-desktop-gaming
+Type=Application
+Categories=Game;
+Keywords=game;console;steam;gaming;

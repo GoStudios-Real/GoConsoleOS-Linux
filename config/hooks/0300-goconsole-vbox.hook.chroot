@@ -1,0 +1,31 @@
+#!/bin/bash
+# GoConsoleOS build hook - VirtualBox guest setup
+set -e
+
+echo "GoConsoleOS: Configuring VirtualBox guest support..."
+
+# Install VBox guest additions from repo
+apt-get install -y virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms 2>/dev/null || true
+
+# Enable VBox services
+systemctl enable vboxservice 2>/dev/null || true
+systemctl enable vboxadd-service 2>/dev/null || true
+
+# VBox shared folders
+mkdir -p /media/sf_Shared 2>/dev/null || true
+
+# VBox 3D acceleration support
+if [ -f /etc/X11/xorg.conf.d/10-vboxvideo.conf ]; then
+    echo "VBox video driver configured"
+else
+    mkdir -p /etc/X11/xorg.conf.d
+    cat > /etc/X11/xorg.conf.d/10-vboxvideo.conf << 'EOF'
+Section "Device"
+    Identifier "VBoxVideo"
+    Driver "vboxvideo"
+    Option "AccelMethod" "none"
+EndSection
+EOF
+fi
+
+echo "GoConsoleOS: VirtualBox guest setup complete"

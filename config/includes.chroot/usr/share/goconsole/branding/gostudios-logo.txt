@@ -1,0 +1,10 @@
+﻿       _______
+      |  ___  |
+      | |   | |
+      | |___| |
+      |  ___  |
+      | |   | |
+      |_|   |_|
+   GoConsoleOS v1.0
+  GoStudios Corporation
+  USB-Powered Gaming OS

@@ -1,0 +1,56 @@
+#!/bin/bash
+# GoConsoleOS build hook - gaming and controller setup
+set -e
+
+echo "GoConsoleOS: Setting up gaming stack..."
+
+# Load controller modules
+cat > /etc/modules-load.d/goconsole-controllers.conf << 'EOF'
+# GoConsoleOS controller modules
+joydev
+uinput
+xpad
+hid-playstation
+hid-nintendo
+EOF
+
+# GameMode config
+rmdir /etc/gamemode.ini 2>/dev/null || true
+cat > /etc/gamemode.ini << 'EOF'
+[general]
+required=1
+softrealtime=auto
+ioprio=0
+
+[gpu]
+apply_gpu governor=performance
+
+[cpu]
+epp=performance
+gov=performance
+EOF
+
+# MangoHud config
+mkdir -p /etc/MangoHud
+cat > /etc/MangoHud/MangoHud.conf << 'EOF'
+fps
+cpu_temp
+gpu_temp
+ram
+vram
+frame_timing
+position=top-left
+font_size=24
+background_color=0.0,0.0,0.0,0.6
+text_color=0,102,255
+EOF
+
+# Gaming environment
+mkdir -p /etc/profile.d
+cat > /etc/profile.d/goconsole-gaming.sh << 'EOF'
+export STEAM_RUNTIME=1
+export MANGOHUD=1
+export MANGOHUD_CONFIG="fps,cpu_temp,gpu_temp,ram,frame_timing,position=top-left"
+EOF
+
+echo "GoConsoleOS: Gaming stack ready"

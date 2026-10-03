@@ -1,0 +1,25 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D0D14"/>
+      <stop offset="100%" style="stop-color:#141A2E"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0066FF"/>
+      <stop offset="100%" style="stop-color:#3385FF"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="800" rx="80" fill="url(#bg)"/>
+  <circle cx="400" cy="400" r="300" fill="none" stroke="#1E2D42" stroke-width="4"/>
+  <rect x="200" y="280" width="400" height="240" rx="30" fill="none" stroke="url(#blue)" stroke-width="18" filter="url(#glow)"/>
+  <rect x="250" y="330" width="300" height="140" rx="16" fill="#141A2E" stroke="#0066FF" stroke-width="3"/>
+  <text x="400" y="410" font-family="Arial,sans-serif" font-size="64" font-weight="bold" fill="#0066FF" text-anchor="middle">GoConsole</text>
+  <circle cx="270" cy="540" r="20" fill="#0066FF"/>
+  <circle cx="530" cy="540" r="20" fill="#0066FF"/>
+  <text x="400" y="700" font-family="Arial,sans-serif" font-size="28" fill="#7A80A0" text-anchor="middle">GoStudios Corporation</text>
+  <text x="400" y="740" font-family="Arial,sans-serif" font-size="20" fill="#4A4A6A" text-anchor="middle">USB-Powered Gaming Console</text>
+</svg>

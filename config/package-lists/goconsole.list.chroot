@@ -1,0 +1,95 @@
+# Core system
+linux-image-generic
+linux-headers-generic
+syslinux
+isolinux
+systemd
+dbus
+
+# Desktop - KDE Plasma (like SteamOS Desktop Mode)
+plasma-desktop
+plasma-nm
+plasma-pa
+sddm
+dolphin
+konsole
+kwrite
+kde-config-sddm
+kde-config-gtk-style
+kde-cli-tools
+breeze
+
+# Window manager fallback
+openbox
+
+# Gaming - SteamOS features
+steam-installer
+gamemode
+mangohud
+lutris
+wine
+winetricks
+vulkan-tools
+mesa-utils
+mesa-vulkan-drivers
+
+# Graphics / Vulkan
+libgl1-mesa-dri
+libglx-mesa0
+libvulkan1
+
+# Audio - PipeWire (like SteamOS)
+pipewire
+pipewire-audio
+wireplumber
+libspa-0.2-bluetooth
+
+# Controller support
+xboxdrv
+python3-evdev
+joystick
+jstest-gtk
+
+# On-screen keyboard
+onboard
+matchbox-keyboard
+
+# Networking
+network-manager
+network-manager-gnome
+wpasupplicant
+bluetooth
+bluez
+bluez-tools
+
+# Fonts
+fonts-dejavu
+fonts-liberation
+fonts-noto-color-emoji
+fonts-roboto
+
+# Utilities
+htop
+neofetch
+git
+curl
+wget
+unzip
+p7zip-full
+flatpak
+firefox
+
+# VirtualBox guest
+virtualbox-guest-utils
+virtualbox-guest-x11
+
+# Boot splash
+plymouth
+plymouth-theme-ubuntu-text
+plymouth-theme-spinner
+
+# Theming
+qt5-style-kvantum
+qt5-style-kvantum-themes
+arc-theme
+papirus-icon-theme

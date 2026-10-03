@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GoConsoleOS Desktop Mode
+Comment=GoStudios KDE Plasma Desktop
+Exec=/usr/share/goconsole/scripts/desktop-mode.sh
+Icon=preferences-desktop
+Type=Application
+Categories=System;
+Keywords=desktop;plasma;kde;work;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GoConsoleOS Gaming Mode
+Comment=Launch console gaming experience
+Exec=/usr/share/goconsole/scripts/gaming-mode.sh
+Icon=preferences-desktop-gaming
+Terminal=false
+Categories=Game;

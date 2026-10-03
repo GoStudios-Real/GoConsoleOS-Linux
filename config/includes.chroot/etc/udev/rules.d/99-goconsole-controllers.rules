@@ -1,0 +1,24 @@
+# GoConsoleOS Controller Support Rules
+# Xbox controllers
+SUBSYSTEM=="input", ATTRS{name}=="Microsoft X-Box 360 pad", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", ATTRS{name}=="Xbox Wireless Receiver", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", ATTRS{name}=="Xbox One Wireless Receiver", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", ATTRS{name}=="Xbox 360 Wireless Receiver", MODE="0666", TAG+="uaccess"
+
+# PlayStation controllers
+SUBSYSTEM=="input", ATTRS{name}=="Sony Interactive Entertainment Wireless Controller", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", ATTRS{name}=="Sony DualShock 4", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", ATTRS{name}=="Sony Interactive Entertainment DualSense", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", ATTRS{name}=="Wireless Controller", MODE="0666", TAG+="uaccess"
+
+# Nintendo controllers
+SUBSYSTEM=="input", ATTRS{name}=="Nintendo Switch Pro Controller", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", ATTRS{name}=="Nintendo Joy-Con", MODE="0666", TAG+="uaccess"
+
+# Generic controllers
+SUBSYSTEM=="input", KERNEL=="js*", MODE="0666", TAG+="uaccess"
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{capabilities/abs}=="*", MODE="0666", TAG+="uaccess"
+KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"
+
+# Bluetooth controllers
+SUBSYSTEM=="bluetooth", ACTION=="add", RUN+="/usr/share/goconsole/scripts/controller-bt-notify.sh"
