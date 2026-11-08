@@ -213,3 +213,11 @@ Output: `/build/binary.hybrid.iso` → copy to `output/GoConsoleOS-1.0-amd64.iso
 - Contents verified: `/casper/filesystem.squashfs`, kernel `6.8.0-146`, `/isolinux/` boot chain
 - BIOS boot only (VirtualBox default) — no UEFI image yet (`LB_BOOTLOADER=syslinux`)
 - `config/includes.chroot` carries all GoStudios branding, hooks, udev rules, SDDM theme, scripts
+
+
+---
+
+## OpenCode
+
+This repository is maintained with [OpenCode](https://opencode.ai).
+Hub: https://gostudios-real.github.io/
